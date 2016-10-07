@@ -48,10 +48,13 @@ class DouYuDanMuClient(AbstractDanMuClient):
                     msg = msg.replace(b'@=', b'":"').replace(b'/', b'","')
                     msg = msg.replace(b'@A', b'@').replace(b'@S', b'/')
                     msg = json.loads((b'{"' + msg[:-2] + b'}').decode('utf8', 'ignore'))
+                    # print(msg)
                     msg['NickName'] = msg.get('nn', '')
                     msg['Content']  = msg.get('txt', '')
                     msg['MsgType']  = {'dgb': 'gift', 'chatmsg': 'danmu',
                         'uenter': 'enter'}.get(msg['type'], 'other')
+                    msg['giftName'] = msg.get('gfid',"")
+                    msg['giftNum'] = msg.get('gs', "")
                 except Exception as e:
                     pass
                 else:

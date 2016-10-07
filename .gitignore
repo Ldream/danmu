@@ -1,5 +1,7 @@
 build/*
 dist/*
+/.idea
 danmu.egg-info/*
+test.py
 *.pyc
 *.swp

@@ -49,6 +49,10 @@ class BilibiliDanMuClient(AbstractDanMuClient):
                     msg['Content']  = msg.get('info', ['', ''])[1]
                     msg['MsgType']  = {'SEND_GIFT': 'gift', 'DANMU_MSG': 'danmu',
                         'WELCOME': 'enter'}.get(msg.get('cmd'), 'other')
+                    msg['MySource'] = msg.get('data',{"":""}).get("giftName","empty")
+                    msg['giftName'] = msg.get('data',{"":""}).get("giftName","empty")
+                    msg['giftNum']  =  msg.get('data',{"":""}).get("num","0")
+                    msg['giftPrice']= msg.get('data',{"":""}).get("price","0")
                 except Exception as e:
                     pass
                 else:
